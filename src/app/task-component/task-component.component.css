@@ -1,0 +1,57 @@
+.btn-primary {
+  color: white;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 500px;
+}
+
+.container {
+  padding-left: 10px;
+}
+
+p {
+  font-family: Arial;
+}
+.content {
+  display: block;
+}
+.canceled,
+.completed {
+  width: 120px;
+  height: 40px;
+  margin: 15px auto;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.bodycont {
+  background-color: white;
+  padding-left: 100px;
+  height: 300px;
+  width: 680px;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-left: 200px;
+}
+
+.tasks {
+  padding-top: 35px;
+}
+
+.mytableinf {
+  background-color: white;
+}
+
+.background-table {
+  background-color: white;
+  display: flex;
+  width: 680px;
+  padding-left: 150px;
+  margin-left: 200px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+}

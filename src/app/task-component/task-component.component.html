@@ -1,0 +1,89 @@
+<div class="container">
+  <form [formGroup]="ToDoList" (ngSubmit)="onSum()">
+    <div class="bodycont">
+      <div class="tasks">
+        Insert the Task's Name:
+        <input
+          [class.is-invalid]="
+            ToDoList.get('title')!.touched && ToDoList.get('title')!.invalid
+          "
+          id="Task"
+          type="text"
+          class="form-control"
+          placeholder="Task's Name"
+          aria-label="Task's Name"
+          aria-describedby="button-addon2"
+          formControlName="title"
+        />
+
+        Insert the Due Date:
+        <input
+          id="due-Date"
+          type="date"
+          class="form-control"
+          placeholder="dueDate"
+          aria-label="dueDate"
+          aria-describedby="button-addon2"
+          formControlName="dueDate"
+        />
+      </div>
+
+      <div class="alert alert-danger" *ngIf="!dueDate?.valid">
+        Date is required
+      </div>
+
+      <br />
+
+      <button
+        [disabled]="
+          !ToDoList.valid ||
+          title?.hasError('whitespace') ||
+          (title && title.hasError('maxlength'))
+        "
+        class="btn btn-primary"
+        type="submit"
+        id="button-addon2"
+      >
+        Create List
+      </button>
+    </div>
+  </form>
+
+  <div
+    class="background-table"
+    *ngFor="let toDoLists of toDoList; let i = index"
+  >
+    <div class="content">
+      <p>
+        <b>Task Name:</b> {{ toDoLists.title }} <b>Due Date:</b>
+        {{ toDoLists.dueDate }}
+      </p>
+      <div class="status">
+        <p><b>State:</b>{{ stateText(toDoLists.state) }}</p>
+      </div>
+
+      <button
+        class="completed"
+        (click)="UpdateData(toDoLists, i, 1)"
+        [disabled]="toDoLists.state == 1 || toDoLists.state == 2"
+        class="btn btn-outline-success"
+        type="submit"
+        id="button-addon3"
+      >
+        Complete
+      </button>
+
+      <button
+        class="cancelled"
+        (click)="UpdateData(toDoLists, i, 2)"
+        [disabled]="toDoLists.state == 1 || toDoLists.state == 2"
+        class="btn btn-outline-danger"
+        type="submit"
+        id="button-addon4"
+        style="margin-left: 10px"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
